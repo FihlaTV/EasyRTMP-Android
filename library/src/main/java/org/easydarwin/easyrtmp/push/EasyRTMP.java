@@ -16,7 +16,7 @@ import org.easydarwin.push.Pusher;
 import org.easydarwin.util.BUSUtil;
 
 public class EasyRTMP implements Pusher {
-    private static String TAG = "EasyRTMP";
+    private static String TAG = "QtuneTV";
     private static String RTMP_KEY;
 
     static {

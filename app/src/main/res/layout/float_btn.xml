@@ -10,7 +10,7 @@
         android:gravity="center"
         android:scaleType="fitXY"
         android:src="@drawable/float_button"
-        android:text="推流中" />
+        android:text="Pushing" />
 
     <ImageView
         android:id="@+id/action_push_error"
@@ -18,7 +18,7 @@
         android:layout_height="25dp"
         android:layout_gravity="right|bottom"
         android:src="@drawable/ic_action_push_error"
-        android:text="推流中"
+        android:text="Pushing"
         android:visibility="gone" />
 
     <TextView

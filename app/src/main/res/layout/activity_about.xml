@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:text="关于"
+                android:text="On"
                 android:gravity="center"
                 android:singleLine="true"
                 android:layout_marginRight="50dp"
@@ -29,7 +29,7 @@
         </android.support.v7.widget.Toolbar>
 
         <TextView
-            android:text="Copyright @ Open.TSINGSEE.com"
+            android:text="Copyright @ Qtune Unified Communication"
             android:layout_height="48dp"
             android:layout_width="match_parent"
             android:gravity="center"
@@ -53,7 +53,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:text="EasyRTMP推流组件："
+                    android:text="QtuneTV Streaming component："
                     android:textSize="18sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -82,7 +82,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:layout_marginRight="15dp"
-                    android:text="配套方案推荐"
+                        android:text="Recommended supporting apps"
                     android:textColor="@color/colorTheme"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -96,7 +96,7 @@
                     android:id="@+id/rtmp_title"
                     android:textAlignment="center"
                     android:layout_marginRight="16dp"
-                    android:text="EasyRTMP推流组件："
+                    android:text="QtuneTV Streaming component："
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rtmp_title2" />
@@ -165,7 +165,7 @@
                     android:layout_marginTop="8dp"
                     android:id="@+id/server_title"
                     android:layout_marginRight="16dp"
-                    android:text="EasyDSS RTMP流媒体服务器：\nhttp://www.easydss.com"
+                    android:text="EasyDSS RTMP streaming server:\nhttp://live.qtune.io/#dss"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/android_rtmp_title" />
@@ -177,7 +177,7 @@
                     android:layout_marginTop="8dp"
                     android:id="@+id/player_title"
                     android:layout_marginRight="16dp"
-                    android:text="EasyPlayerPro全功能播放器：\nhttps://github.com/EasyDSS/EasyPlayerPro"
+                    android:text="Qtune Player"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/server_title" />

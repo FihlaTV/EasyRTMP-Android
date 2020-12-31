@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 ms.observeCameraPreviewResolution(MainActivity.this, new Observer<int[]>() {
                     @Override
                     public void onChanged(@Nullable int[] size) {
-                        Toast.makeText(MainActivity.this, "当前摄像头分辨率为:" + size[0] + "*" + size[1], Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "The current camera resolution is:" + size[0] + "*" + size[1], Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -78,11 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 ms.observePushingState(MainActivity.this, new Observer<MediaStream.PushingState>() {
                     @Override
                     public void onChanged(@Nullable MediaStream.PushingState pushingState) {
-                        pushingStateText.setText("推送");
+                        pushingStateText.setText("Stream");
                         if (ms.isPushStream) {
-                            pushingBtn.setText("停止");
+                            pushingBtn.setText("Stop");
                         } else {
-                            pushingBtn.setText("推送");
+                            pushingBtn.setText("Stream");
                         }
 
                         pushingStateText.append(":\t" + pushingState.msg);
@@ -90,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
                             pushingStateText.append(pushingState.url);
                             pushingStateText.append("\n");
                             if ("avc".equals(pushingState.videoCodec)) {
-                                pushingStateText.append("视频编码方式：" + "H264硬编码");
+                                pushingStateText.append("Video encoding method: \"+ \"H264 hard encoding");
                             } else if ("hevc".equals(pushingState.videoCodec)) {
-                                pushingStateText.append("视频编码方式："  + "H265硬编码");
+                                pushingStateText.append("Video encoding method: \"+ \"H265 hard encoding");
                             } else if ("x264".equals(pushingState.videoCodec)) {
-                                pushingStateText.append("视频编码方式："  + "x264");
+                                pushingStateText.append("Video encoding method："  + "x264");
                             }
                         }
                     }
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) throws Exception {
-                Toast.makeText(MainActivity.this, "创建服务出错!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Error creating service!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -142,12 +142,12 @@ public class MainActivity extends AppCompatActivity {
                 } else {                                // 启动预览和推送.
                     mediaStream.openCameraPreview();
 
-                    String url = "rtmp://demo.easydss.com:3388/hls/1gt2yOvZg?sign=JgthsOvWgz"; //Config.getServerURL(UVCActivity.this);
+                    String url = "rtmp://live.qtune.io/stream/"; //Config.getServerURL(UVCActivity.this);
                     try {
                         mediaStream.startStream(url, code -> BUSUtil.BUS.post(new PushCallback(code)));
                     } catch (IOException e) {
                         e.printStackTrace();
-                        Toast.makeText(MainActivity.this, "激活失败，无效Key", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Activation failed, invalid key", Toast.LENGTH_LONG).show();
                     }
                 }
             }

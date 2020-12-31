@@ -24,7 +24,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="265格式编码"
+        android:text="265 format encoding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/texture_view" />
 
@@ -47,7 +47,7 @@
                 android:id="@+id/pushing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="推送"
+                android:text="Stream"
                 android:onClick="onPushing"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onSwitchCamera"
-                android:text="切换"
+                android:text="Switch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,7 +76,7 @@
             android:id="@+id/press_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="按住录像"
+            android:text="Record"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView

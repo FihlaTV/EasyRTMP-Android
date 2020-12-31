@@ -43,9 +43,9 @@ public class ScanQRActivity extends AppCompatActivity  {
                             if (text.toLowerCase().startsWith("rtmp://")) {
                                 new AlertDialog
                                         .Builder(ScanQRActivity.this)
-                                        .setTitle("扫描到了推送地址")
+                                        .setTitle("Scanned the push address")
                                         .setMessage(text)
-                                        .setPositiveButton("使用该地址推送", new DialogInterface.OnClickListener() {
+                                        .setPositiveButton("Use this address to push", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 Intent intent = new Intent();
@@ -53,7 +53,7 @@ public class ScanQRActivity extends AppCompatActivity  {
                                                 setResult(RESULT_OK, intent);
                                                 finish();
                                             }
-                                        }).setNegativeButton("重新扫描", new DialogInterface.OnClickListener() {
+                                        }).setNegativeButton("Rescan", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 mCodeScanner.startPreview();

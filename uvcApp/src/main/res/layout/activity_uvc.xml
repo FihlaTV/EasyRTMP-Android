@@ -40,21 +40,21 @@
                 android:layout_weight="1"
                 android:id="@+id/pushing"
                 android:onClick="onPush"
-                android:text="推送" />
+                android:text="Stream" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onQuit"
-                android:text="退出" />
+                android:text="Quti" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onBackground"
-                android:text="后台" />
+                android:text="Background" />
 
         </LinearLayout>
     </TableLayout>

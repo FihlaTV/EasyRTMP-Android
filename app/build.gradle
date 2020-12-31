@@ -5,7 +5,7 @@ android {
     buildToolsVersion '28.0.3'
 
     defaultConfig {
-        applicationId "org.easydarwin.easyrtmp"
+        applicationId "com.mvp.qtune.live"
         minSdkVersion 19
         targetSdkVersion 26
 //        versionCode generateVersionCode()
@@ -46,7 +46,7 @@ android {
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "EasyRTMP-" + variant.versionCode + "-" + variant.versionName + ".apk"
+            outputFileName = "QtuneTV-" + variant.versionCode + "-" + variant.versionName + ".apk"
         }
     }
 

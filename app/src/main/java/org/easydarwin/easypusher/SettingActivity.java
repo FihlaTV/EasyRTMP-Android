@@ -70,8 +70,8 @@ public class SettingActivity extends AppCompatActivity implements Toolbar.OnMenu
                         } else {
                             new AlertDialog
                                     .Builder(SettingActivity.this)
-                                    .setTitle("后台上传视频")
-                                    .setMessage("后台上传视频需要APP出现在顶部.是否确定?")
+                                    .setTitle("Upload video in background")
+                                    .setMessage("Uploading videos in the background requires the APP to appear at the top. Are you sure?")
                                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -215,13 +215,13 @@ public class SettingActivity extends AppCompatActivity implements Toolbar.OnMenu
     * */
     public void onScreenPushResolution(View view) {
         int defaultIdx = SPUtil.getScreenPushingResIndex(this);
-        new AlertDialog.Builder(this).setTitle("推送屏幕分辨率").setSingleChoiceItems(
-                new CharSequence[]{"1倍屏幕大小", "0.75倍屏幕大小", "0.5倍屏幕大小", "0.3倍屏幕大小", "0.25倍屏幕大小", "0.2倍屏幕大小"}, defaultIdx, new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this).setTitle("Stream screen resolution").setSingleChoiceItems(
+                new CharSequence[]{"1 times the screen size", "0.75 times the screen size", "0.5 times the screen size", "0.3 times the screen size", "0.25 times the screen size", "0.2 times the screen size"}, defaultIdx, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         SPUtil.setScreenPushingResIndex(SettingActivity.this, which);
 
-                        Toast.makeText(SettingActivity.this,"配置更改将在下次启动屏幕推送时生效", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SettingActivity.this,"Configuration changes will take effect the next time the screen is pushed", Toast.LENGTH_SHORT).show();
 
                         dialog.dismiss();
                     }

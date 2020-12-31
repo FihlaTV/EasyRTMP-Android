@@ -203,7 +203,7 @@ public class MediaFilesActivity extends AppCompatActivity implements Toolbar.OnM
             final String path = mSubFiles[holder.getAdapterPosition()].getPath();
 
             if (TextUtils.isEmpty(path)) {
-                Toast.makeText(getContext(), "文件不存在", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "file does not exist", Toast.LENGTH_SHORT).show();
                 return;
             }
 

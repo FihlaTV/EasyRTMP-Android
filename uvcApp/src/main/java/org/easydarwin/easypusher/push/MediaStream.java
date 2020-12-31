@@ -396,7 +396,7 @@ public class MediaStream extends Service implements LifecycleObserver {
 
             if (PreferenceManager.getDefaultSharedPreferences(appContext).getBoolean("key_enable_video_overlay", true)) {
                 String txt;// = String.format("drawtext=fontfile=" + appContext.getFileStreamPath("SIMYOU.ttf") + ": text='%s%s':x=(w-text_w)/2:y=H-60 :fontcolor=white :box=1:boxcolor=0x00000000@0.3", "EasyPusher", new SimpleDateFormat("yyyy-MM-ddHHmmss").format(new Date()));
-                txt = "EasyRTMP " + new SimpleDateFormat("yy-MM-dd HH:mm:ss SSS").format(new Date());
+                txt = "QtuneTV " + new SimpleDateFormat("yy-MM-dd HH:mm:ss SSS").format(new Date());
                 overlay.overlay(data, txt);
             }
 
@@ -405,7 +405,7 @@ public class MediaStream extends Service implements LifecycleObserver {
         } else {
             if (PreferenceManager.getDefaultSharedPreferences(appContext).getBoolean("key_enable_video_overlay", true)) {
                 String txt;// = String.format("drawtext=fontfile=" + appContext.getFileStreamPath("SIMYOU.ttf") + ": text='%s%s':x=(w-text_w)/2:y=H-60 :fontcolor=white :box=1:boxcolor=0x00000000@0.3", "EasyPusher", new SimpleDateFormat("yyyy-MM-ddHHmmss").format(new Date()));
-                txt = "EasyRTMP " + new SimpleDateFormat("yy-MM-dd HH:mm:ss SSS").format(new Date());
+                txt = "QtuneTV " + new SimpleDateFormat("yy-MM-dd HH:mm:ss SSS").format(new Date());
                 overlay.overlay(data, txt);
             }
 

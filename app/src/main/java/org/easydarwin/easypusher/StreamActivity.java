@@ -371,7 +371,7 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
                 String url = Config.getServerURL(this);
                 txtStreamAddress.setText(url);
 
-                sendMessage("推流中");
+                sendMessage("Pushing");
 
                 ImageView startPush = findViewById(R.id.streaming_activity_push);
                 startPush.setImageResource(R.drawable.start_push_pressed);
@@ -406,7 +406,7 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
         mMediaStream.startPreview();
 
         if (mMediaStream.isStreaming()) {
-            sendMessage("推流中");
+            sendMessage("Pushing");
             txtStreamAddress.setText(Config.getServerURL(this));
         }
     }
@@ -456,7 +456,7 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
 
                     spnResolution.setSelection(pos, false);
 
-                    Toast.makeText(StreamActivity.this, "正在推送中,无法切换分辨率", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(StreamActivity.this, "Pushing, cannot switch resolution", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -566,40 +566,40 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
     public void onPushCallback(final PushCallback cb) {
         switch (cb.code) {
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_ACTIVATE_INVALID_KEY:
-                sendMessage("无效Key");
+                sendMessage("Invalid key");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_ACTIVATE_SUCCESS:
-                sendMessage("激活成功");
+                sendMessage("Activation Successfully");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_RTMP_STATE_CONNECTING:
-                sendMessage("连接中");
+                sendMessage("Connecting..");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_RTMP_STATE_CONNECTED:
-                sendMessage("连接成功");
+                sendMessage("Live");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_RTMP_STATE_CONNECT_FAILED:
-                sendMessage("连接失败");
+                sendMessage("Failed");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_RTMP_STATE_CONNECT_ABORT:
-                sendMessage("连接异常中断");
+                sendMessage("Abort ");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_RTMP_STATE_PUSHING:
-                sendMessage("推流中");
+                sendMessage("Pushing");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_RTMP_STATE_DISCONNECTED:
-                sendMessage("断开连接");
+                sendMessage("Offline");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_ACTIVATE_PLATFORM_ERR:
-                sendMessage("平台不匹配");
+                sendMessage("Activation Failed");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_ACTIVATE_COMPANY_ID_LEN_ERR:
-                sendMessage("断授权使用商不匹配");
+                sendMessage("Authorized user mismatch");
                 break;
             case EasyRTMP.OnInitPusherCallback.CODE.EASY_ACTIVATE_PROCESS_NAME_LEN_ERR:
-                sendMessage("进程名称长度不匹配");
+                sendMessage("Process name length does not match");
                 break;
             case EASY_ACTIVATE_VALIDITY_PERIOD_ERR:
-                sendMessage("进程名称长度不匹配");
+                sendMessage("Activation period expired");
                 break;
         }
     }
@@ -657,15 +657,15 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
         boolean isStreaming = mMediaStream != null && mMediaStream.isStreaming();
 
         if (isStreaming && SPUtil.getEnableBackgroundCamera(this)) {
-            new AlertDialog.Builder(this).setTitle("是否允许后台上传？")
-                    .setMessage("您设置了使能摄像头后台采集,是否继续在后台采集并上传视频？如果是，记得直播结束后,再回来这里关闭直播。")
-                    .setNeutralButton("后台采集", (dialogInterface, i) -> {
+            new AlertDialog.Builder(this).setTitle("Do you allow background uploads?")
+                    .setMessage("You have set the camera to enable background capture, do you continue to capture and upload videos in the background? If so, remember to come back here to close the live broadcast after the live broadcast is over.")
+                    .setNeutralButton("Background collection", (dialogInterface, i) -> {
                         StreamActivity.super.onBackPressed();
                     })
-                    .setPositiveButton("退出程序", (dialogInterface, i) -> {
+                    .setPositiveButton("exit the program", (dialogInterface, i) -> {
                         mMediaStream.stopStream();
                         StreamActivity.super.onBackPressed();
-                        Toast.makeText(StreamActivity.this, "程序已退出。", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(StreamActivity.this, "Program has exited。", Toast.LENGTH_SHORT).show();
                     })
                     .setNegativeButton(android.R.string.cancel, null)
                     .show();
@@ -675,7 +675,7 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
         //与上次点击返回键时刻作差
         if ((System.currentTimeMillis() - mExitTime) > 2000) {
             //大于2000ms则认为是误操作，使用Toast进行提示
-            Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Press again to exit the program", Toast.LENGTH_SHORT).show();
             //并记录下本次点击“返回键”的时刻，以便下次进行判断
             mExitTime = System.currentTimeMillis();
         } else {
@@ -726,14 +726,14 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
      * */
     public void onPushScreen(final View view) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            new AlertDialog.Builder(this).setMessage("推送屏幕需要安卓5.0以上,您当前系统版本过低,不支持该功能。").setTitle("抱歉").show();
+            new AlertDialog.Builder(this).setMessage("Stream screen requires Android 5.0 or higher. Your current system version is too low to support this function.").setTitle("Sorry").show();
             return;
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(this)) {
                 new AlertDialog.Builder(this)
-                        .setMessage("推送屏幕需要APP出现在顶部.是否确定?")
+                        .setMessage("The push screen requires the APP to appear at the top. Are you sure??")
                         .setPositiveButton(android.R.string.ok,
                                 (dialogInterface, i) -> {
                                     // 在Android 6.0后，Android需要动态获取权限，若没有权限，提示获取.
@@ -748,7 +748,7 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         if (!SPUtil.getScreenPushing(this)) {
-            new AlertDialog.Builder(this).setTitle("提醒").setMessage("屏幕直播将要开始,直播过程中您可以切换到其它屏幕。不过记得直播结束后,再进来停止直播哦!").setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this).setTitle("Reminder").setMessage("The screen live broadcast is about to start. You can switch to other screens during the live broadcast. But remember after the live broadcast is over, come in and stop the live broadcast.!").setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     SPUtil.setScreenPushing(StreamActivity.this, true);
@@ -785,7 +785,7 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
     public void onSwitchOrientation(View view) {
         if (mMediaStream != null) {
             if (mMediaStream.isStreaming()){
-                Toast.makeText(this,"正在推送中,无法更改屏幕方向", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Pushing, unable to change screen orientation", Toast.LENGTH_SHORT).show();
                 return;
             }
         }
@@ -820,12 +820,12 @@ public class StreamActivity extends AppCompatActivity implements View.OnClickLis
                 txtStreamAddress.setText(url);
             } catch (IOException e) {
                 e.printStackTrace();
-                sendMessage("激活失败，无效Key");
+                sendMessage("Activation failed, invalid key");
             }
         } else {
             mMediaStream.stopStream();
             ib.setImageResource(R.drawable.start_push);
-            sendMessage("断开连接");
+            sendMessage("Disconnect");
         }
     }
 

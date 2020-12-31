@@ -61,14 +61,14 @@ public class UVCActivity extends AppCompatActivity {
                     @Override
                     public void onChanged(@Nullable MediaStream.PushingState pushingState) {
                         if (pushingState.screenPushing) {
-                            pushingStateText.setText("屏幕推送");
+                            pushingStateText.setText("Screen push");
                         } else {
-                            pushingStateText.setText("推送");
+                            pushingStateText.setText("Stream");
 
                             if (pushingState.state > 0) {
-                                pushingBtn.setText("停止");
+                                pushingBtn.setText("Stop");
                             } else {
-                                pushingBtn.setText("推送");
+                                pushingBtn.setText("Stream");
                             }
                         }
 
@@ -101,7 +101,7 @@ public class UVCActivity extends AppCompatActivity {
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) throws Exception {
-                Toast.makeText(UVCActivity.this, "创建服务出错!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UVCActivity.this, "Error creating service!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -148,12 +148,12 @@ public class UVCActivity extends AppCompatActivity {
                         @Override
                         public void accept(Object o) throws Exception {
                             //String url = Config.getServerURL(UVCActivity.this);
-                            String url = "rtmp://demo.easydss.com:3388/hls/mytest1?sign=OTMjcvBWg";
+                            String url = "rtmp://live.qtune.io/stream";
                             try {
                                 mediaStream.startStream(url, code -> BUSUtil.BUS.post(new PushCallback(code)));
                             } catch (IOException e) {
                                 e.printStackTrace();
-                                Toast.makeText(UVCActivity.this, "激活失败，无效Key", Toast.LENGTH_LONG).show();
+                                Toast.makeText(UVCActivity.this, "Activation failed, invalid key", Toast.LENGTH_LONG).show();
                             }
                         }
                     }, new Consumer<Throwable>() {
@@ -163,7 +163,7 @@ public class UVCActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(UVCActivity.this, "UVC摄像头启动失败.." + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(UVCActivity.this, "UVC camera failed to start.." + t.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
