@@ -1,7 +1,7 @@
 package org.easydarwin.easypusher.push;
 
 import android.app.Service;
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 import android.content.Intent;
 import android.hardware.usb.UsbDevice;
 import android.os.Binder;

@@ -1,9 +1,9 @@
 package org.easydarwin.easypusher;
 
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -30,24 +30,24 @@ public class AboutActivity extends AppCompatActivity implements Toolbar.OnMenuIt
         // 左边的小箭头（注意需要在setSupportActionBar(toolbar)之后才有效果）
         binding.mainToolbar.setNavigationIcon(R.drawable.com_back);
 
-        binding.version.setText("EasyRTMP Android 推流器");
+        binding.version.setText("QtuneTV Android Pusher");
         binding.version.append("(");
 
         SpannableString spannableString;
         if (EasyApplication.activeDays >= 9999) {
-            spannableString = new SpannableString("激活码永久有效");
+            spannableString = new SpannableString("Activation code is permanent");
             spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorGREEN)),
                     0,
                     spannableString.length(),
                     Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         } else if (EasyApplication.activeDays > 0) {
-            spannableString = new SpannableString(String.format("激活码还剩%d天可用", EasyApplication.activeDays));
+            spannableString = new SpannableString(String.format("Activation code is available in %d days", EasyApplication.activeDays));
             spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorYELLOW)),
                     0,
                     spannableString.length(),
                     Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         } else {
-            spannableString = new SpannableString(String.format("激活码已过期(%d)", EasyApplication.activeDays));
+            spannableString = new SpannableString(String.format("The activation code has expired (%d)", EasyApplication.activeDays));
             spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorRED)),
                     0,
                     spannableString.length(),
@@ -57,12 +57,12 @@ public class AboutActivity extends AppCompatActivity implements Toolbar.OnMenuIt
         binding.version.append(spannableString);
         binding.version.append(")");
 
-        binding.serverTitle.setText("EasyDSS RTMP流媒体服务器：\n");
+        binding.serverTitle.setText("Qtune LiveTV：\n");
         binding.serverTitle.setMovementMethod(LinkMovementMethod.getInstance());
 
-        spannableString = new SpannableString("http://www.easydss.com");
+        spannableString = new SpannableString("https://qtune.io/#LiveTv");
         //设置下划线文字
-        spannableString.setSpan(new URLSpan("http://www.easydss.com"), 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new URLSpan("http://www.qtune.io"), 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
         //设置文字的前景色
         spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorTheme)),
@@ -72,11 +72,11 @@ public class AboutActivity extends AppCompatActivity implements Toolbar.OnMenuIt
 
         binding.serverTitle.append(spannableString);
 
-        binding.playerTitle.setText("EasyPlayerPro全功能播放器：\n");
+        binding.playerTitle.setText("QtunePro Full-featured player：\n");
         binding.playerTitle.setMovementMethod(LinkMovementMethod.getInstance());
-        spannableString = new SpannableString("https://github.com/EasyDSS/EasyPlayerPro");
+        spannableString = new SpannableString("https://github.com/FihlaTV/EasyPlayerPro");
         //设置下划线文字
-        spannableString.setSpan(new URLSpan("https://github.com/EasyDSS/EasyPlayerPro"), 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new URLSpan("https://github.com/FihlaTV/EasyPlayerPro"), 0, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
         //设置文字的前景色
         spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorTheme)),
